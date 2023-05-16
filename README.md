@@ -1,2 +1,27 @@
 # dockerK8s_traning
 Docker and Kubernetes traning material and hands on content
+Week 1: Setting Platform For Mission  (2 - 2.5 hours)
+    Docker architecture and components
+    Kubernetes architecture and components
+    Setting the workplace 
+    Running a Docker container and managing its lifecycle
+    Running a k8s pod and managing its lifecycle
+    Building Docker images with Dockerfile and best practices
+    Building k8s pod 
+Week 2: Hands-On  Battlefield (2 - 2.5 hours)
+    Deep dive into storage and volumes
+    multi-container applications
+    Deployments and scaling
+    security and best practices
+    Service Accounts 
+    logging and monitoring
+    Docker and K8s pod networking 
+Week 3: Hero To SuperHero (2 - 2.5 hours)
+    Kubernetes pods and containers with YAML configuration files
+    Init containers and side-car containers
+    Services and load balancing
+    Custom resources 
+    HPA 
+    Probes  
+    Whats Next
+
