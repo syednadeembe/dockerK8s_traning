@@ -1,0 +1,31 @@
+Pull the image using the docker pull command:
+docker pull hello-world
+
+Create a container from the image using the docker create command:
+docker create --name my-hello-world hello-world
+
+Start the container using the docker start command:
+docker start my-hello-world
+
+Run a command inside the container using the docker exec command:
+docker exec my-hello-world echo "Hello, world!"
+This command will output the message "Hello, world!" inside the container.
+
+Pause the container using the docker pause command:
+docker pause my-hello-world
+
+Unpause the container using the docker unpause command:
+docker unpause my-hello-world
+
+Stop the container using the docker stop command:
+docker stop my-hello-world
+
+Restart the container using the docker start command:
+docker start my-hello-world
+
+Remove the container using the docker rm command:
+docker rm my-hello-world
+These commands will create, start, run, pause, unpause, stop, restart, and remove a container based on the hello-world Docker image.
+
+To see the container details
+docker inspect my-hello-world

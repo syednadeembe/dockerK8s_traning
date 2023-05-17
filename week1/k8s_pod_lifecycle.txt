@@ -1,0 +1,11 @@
+Pending: When a Pod is created, it is in a "Pending" state until all its containers are scheduled to run on a node. Kubernetes will try to schedule the Pod on a node that has the required resources (CPU, memory, etc.) available.
+
+Running: Once all the containers in the Pod have been scheduled to a node, the Pod transitions to a "Running" state. At this point, the containers are started and running.
+
+Succeeded/Failed: A Pod can transition to a "Succeeded" state if all its containers have completed their tasks successfully and exited. On the other hand, if any container in the Pod fails to start or exits with an error, the Pod will transition to a "Failed" state.
+
+CrashLoopBackOff: If a container in a Pod crashes and restarts repeatedly (more than a specified number of times), the Pod will enter a "CrashLoopBackOff" state, indicating a problem with the container.
+
+Terminating: When a Pod is deleted, it transitions to a "Terminating" state, and Kubernetes starts the process of terminating the containers in the Pod.
+
+Terminated: Once all the containers in the Pod have been successfully terminated, the Pod transitions to a "Terminated" state.
