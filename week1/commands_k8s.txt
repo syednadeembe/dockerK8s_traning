@@ -1,0 +1,26 @@
+### Imperative command
+kubectl run my-pod --image=nginx:latest --restart=Never
+
+### From a yaml file
+kubectl apply -f <file.yaml>
+
+### kubectl exec -it <pod-name> -- <command>
+
+### kubectl logs <pod-name>
+
+### kubectl describe pod <pod-name>
+
+### kubectl get pods
+
+### kubectl get pods --show-labels --show-kind --show-namespace
+
+### kubectl api-resource 
+
+### kubectl explain pod --recursive
+
+### kubectl get po my-pod -o json | jq -r '.spec.containers[].image'
+
+### kubectl cluster-info dump | more
+
+
+
