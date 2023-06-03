@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  initContainers:
+    - name: prestart-setup
+      image: busybox:latest
+      command: ["sh", "-c", "echo Prestart logic here, starting in 15 sec; sleep 15"]
+      # Configuration for the prestart init container
+
+  containers:
+    - name: main-app
+      image: nginx:latest
+      # Configuration for the main application container
+      lifecycle:
+        preStop:
+          exec:
+            command: ["sh", "-c", "echo PreStop logic here, stopping in 30 secs; sleep 30"]
+
+  terminationGracePeriodSeconds: 30
+
