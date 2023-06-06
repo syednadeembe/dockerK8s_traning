@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myapp-config
+data:
+  foo: initial-foo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp-controller
+  template:
+    metadata:
+      labels:
+        app: myapp-controller
+    spec:
+      containers:
+        - name: myapp-controller
+          image: nginx
+          imagePullPolicy: Always
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              while true; do
+                sleep 5
+                OLD_FOO=$(cat /tmp/myapp-foo/foo)
+                NEW_FOO=$(kubectl get myapp myapp-instance -o=jsonpath='{.spec.foo}')
+                if [ "$OLD_FOO" != "$NEW_FOO" ]; then
+                  echo "Change detected in foo field. Old value: $OLD_FOO, New value: $NEW_FOO"
+                fi
+              done
+          volumeMounts:
+            - name: myapp-foo
+              mountPath: /tmp/myapp-foo
+      initContainers:
+        - name: myapp-init
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args:
+            - "echo 'foo: $(kubectl get myapp myapp-instance -o=jsonpath='{.spec.foo}')' > /tmp/myapp-foo/foo"
+          volumeMounts:
+            - name: myapp-foo
+              mountPath: /tmp/myapp-foo
+      volumes:
+        - name: myapp-foo
+          emptyDir: {}
